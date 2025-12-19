@@ -15,7 +15,7 @@ def speak(text):
 
 while True:
     with sr.Microphone() as source:
-        print("speak in Telugu")
+        print("Please speak in Telugu")
         try:
             audio = recognizer.listen(source)
             text = recognizer.recognize_google(audio, language="te-IN")
@@ -24,6 +24,9 @@ while True:
             response = process_input(text)
             print("Agent:", response)
             speak(response)
+
+            if "అర్హత ఉంది" in response:
+                break
 
         except:
             speak("క్షమించండి, మళ్లీ చెప్పండి")
