@@ -1,22 +1,29 @@
 import speech_recognition as sr
-import pyttsx3
+from gtts import gTTS
+from playsound import playsound
+import os
+from agent import process_input
 
 recognizer =sr.Recognizer()
-engine = pyttsx3.init()
 
 def speak(text):
-    engine.say(text)
-    engine.runAndWait()
+    tts = gTTS(text=text, lang="te")
+    tts.save("response.mp3")
+    playsound("response.mp3")
+    os.remove("response.mp3")
+
 
 while True:
     with sr.Microphone() as source:
-        print("speak in Telugu...")
+        print("speak in Telugu")
         try:
             audio = recognizer.listen(source)
             text = recognizer.recognize_google(audio, language="te-IN")
             print("You said:", text)
 
-            speak(text)
+            response = process_input(text)
+            print("Agent:", response)
+            speak(response)
 
         except:
             speak("క్షమించండి, మళ్లీ చెప్పండి")
