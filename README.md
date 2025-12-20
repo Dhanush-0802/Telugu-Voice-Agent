@@ -53,12 +53,14 @@ Each tool in this project is called independently by the agent during the conver
 -> Microphone access
 -> Internet connection (for speech recognition and text to speech)
 
-## Installation
-```bash
+### Installation
+
 pip install -r requirements.txt
 
 ## Run the application
-```bash
+
 python main.py
 
+Press Ctrl + C to stop the application.
 
+This project demonstrates a voice-first, agentic workflow with tool usage, memory, and failure handling in a native Indian language.
